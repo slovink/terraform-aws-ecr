@@ -1,62 +1,107 @@
-# Terraform-aws-ecr
+<<p align="center"> <img src="https://user-images.githubusercontent.com/50652676/62349836-882fef80-b51e-11e9-99e3-7b974309c7e3.png" width="100" height="100"></p>
 
-# Terraform AWS Cloud ECR Module
 
-## Table of Contents
+<h1 align="center">
+    Terraform AWS  ECR
+</h1>
+
+
+<p align="center">
+
+<a href="https://www.terraform.io">
+  <img src="https://img.shields.io/badge/Terraform-v1.7.0-green" alt="Terraform">
+</a>
+<a href="https://github.com/slovink/terraform-aws-ecr/blob/master/LICENSE">
+  <img src="https://img.shields.io/badge/License-APACHE-blue.svg" alt="Licence">
+</a>
+
+
+
+</p>
+<p align="center">
+
+<a href='https://www.facebook.com/Slovink.in=https://github.com/slovink/terraform-aws-ecr'>
+  <img title="Share on Facebook" src="https://user-images.githubusercontent.com/50652676/62817743-4f64cb80-bb59-11e9-90c7-b057252ded50.png" />
+</a>
+<a href='https://www.linkedin.com/company/101534993/admin/feed/posts/=https://github.com/slovink/terraform-aws-ecr'>
+  <img title="Share on LinkedIn" src="https://user-images.githubusercontent.com/50652676/62817742-4e339e80-bb59-11e9-87b9-a1f68cae1049.png" />
+</a>
+
+
+
 - [Introduction](#introduction)
 - [Usage](#usage)
-- [Examples](#Examples)
-- [Author](#Author)
+- [Module Inputs](#module-inputs)
+- [Module Outputs](#module-outputs)
+- [Examples](#examples)
 - [License](#license)
-- [Inputs](#inputs)
-- [Outputs](#outputs)
+
+
+
+## Prerequisites
+
+This module has a few dependencies:
+
+- [Terraform 1.x.x](https://learn.hashicorp.com/terraform/getting-started/install.html)
+- [Go](https://golang.org/doc/install)
+
+
 
 ## Introduction
-This Terraform module creates an AWS Elastic Container Registry (ECR) along with additional configuration options.
-## Usage
-To use this module, you can include it in your Terraform configuration. Here's an example of how to use it:
+This Terraform module creates an AWS ECR along with additional configuration options.
 
 ## Examples
-
-## Example: private_ecr
-
-```hcl
-module "private_ecr" {
-  source             = "./../../"
-  enable_private_ecr = true
-  name               = local.name
-  environment        = local.environment
-  scan_on_push       = true
-  max_image_count    = 7
-}
-```
-
-## Example: public_ecr
-```hcl
-module "public_ecr" {
-  source                   = "./../../"
-  enable_public_ecr        = true
-  name                     = local.name
-  environment              = local.environment
-  max_untagged_image_count = 1
-  max_image_count          = 7
-  public_repository_catalog_data = {
-    description       = "Docker container for some things"
-    operating_systems = ["Linux"]
-    architectures     = ["x86"]
-  }
-}
-```
-
-## Example
-For detailed examples on how to use this module, please refer to the '[example](https://github.com/slovink/terraform-aws-ecr/blob/master/example)' directory within this repository.
+For detailed examples on how to use this module, please refer to the [Examples](https://github.com/slovink/terraform-aws-ecr/tree/master/example) directory within this repository.
 
 ## Author
-Your Name Replace **MIT** and **slovink** with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for yourenable_public_ecr        = true specific use case.
+Your Name Replace **MIT** and **slovink** with the appropriate license and your information. Feel free to expand this README with additional details or usage instructions as needed for your specific use case.
 
 ## License
 This project is licensed under the **MIT** License - see the [LICENSE](https://github.com/slovink/terraform-aws-ecr/blob/master/LICENSE) file for details.
-<!-- BEGIN_TF_DOCS -->
+
+## Feedback
+If you come accross a bug or have any feedback, please log it in our [issue tracker](https://github.com/slovink/terraform-aws-ecr/issues), or feel free to drop us an email at [concat@slovink.com](concat@slovink.com).
+
+If you have found it worth your time, go ahead and give us a ★ on [our GitHub](https://github.com/slovink/terraform-aws-ecr)!
+
+
+## About us
+At https://slovink.com/ we offer expert guidance, implementation support and services to help organisations accelerate their journey to the slovi. Our
+services include docker and container orchestration, slov migration and adoption, infrastructure automation, application modernisation and
+remediation, and performance engineering.
+
+
+### Example: private_ecr
+
+  ```hcl
+    module "private_ecr" {
+      source             = "https://github.com/slovink/terraform-aws-ecr.git?ref=v1.0.0"
+      enable_private_ecr = true
+      name               = local.name
+      environment        = local.environment
+      scan_on_push       = true
+      max_image_count    = 7
+    }
+  ```
+
+### Example: public_ecr
+   ```hcl
+     module "public_ecr" {
+       source                   = "https://github.com/slovink/terraform-aws-ecr.git?ref=v1.0.0"
+       enable_public_ecr        = true
+       name                     = local.name
+       environment              = local.environment
+       max_untagged_image_count = 1
+       max_image_count          = 7
+       public_repository_catalog_data = {
+         description       = "Docker container for some things"
+         operating_systems = ["Linux"]
+         architectures     = ["x86"]
+       }
+     }
+   ```
+
+
 ## Requirements
 
 | Name | Version |

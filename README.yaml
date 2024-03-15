@@ -1,0 +1,73 @@
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name : Terraform ECR
+
+# License of this project
+license: "APACHE"
+
+# Canonical GitHub repo
+github_repo: git@github.com:slovink/terraform-aws-ecr.git
+
+
+# Badges to display
+badges:
+  - name: "Terraform"
+    image: "https://img.shields.io/badge/Terraform-v1.7.0-green"
+    url: "https://www.terraform.io"
+  - name: "Licence"
+    image: "https://img.shields.io/badge/License-APACHE-blue.svg"
+    url: "https://github.com/slovink/terraform-aws-ecr/blob/master/LICENSE"
+  - name: "tfsec"
+    image: "https://github.com/slovink/terraform-aws-ecr/blob/master/.github/workflows/tfsec.yml"
+    url: "https://github.com/slovink/terraform-aws-ecr/blob/master/.github/workflows/tfsec.yml"
+
+
+
+#  description of this project
+description: |-
+  This terraform module is designed to generate consistent label names and tags for resources. You can use terraform-ecr to implement a strict naming convention.
+
+
+# extra content
+include:
+  - "terraform.md"
+# How to use this project
+usage : |-
+
+  ### Example:- private_ecr
+  Here is an example of how you can use this module in your inventory structure:
+   ```hcl
+
+      module "private_ecr" {
+        source             = "https://github.com/slovink/terraform-aws-ecr.git?ref=v1.0.0"
+        enable_private_ecr = true
+        name               = local.name
+        environment        = local.environment
+        scan_on_push       = true
+        max_image_count    = 7
+      }
+   ```
+
+
+  ### Example:- public_ecr
+  Here is an example of how you can use this module in your inventory structure:
+   ```hcl
+
+      module "public_ecr" {
+        source                   = "https://github.com/slovink/terraform-aws-ecr.git?ref=v1.0.0"
+        enable_public_ecr        = true
+        name                     = local.name
+        environment              = local.environment
+        max_untagged_image_count = 1
+        max_image_count          = 7
+        public_repository_catalog_data = {
+        description       = "Docker container for some things"
+        operating_systems = ["Linux"]
+        architectures     = ["x86"]
+        }
+      }
+   ```
