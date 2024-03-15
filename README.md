@@ -1,4 +1,3 @@
-
 <<p align="center"> <img src="https://user-images.githubusercontent.com/50652676/62349836-882fef80-b51e-11e9-99e3-7b974309c7e3.png" width="100" height="100"></p>
 
 
@@ -21,10 +20,10 @@
 </p>
 <p align="center">
 
-<a href='https://www.facebook.com/Slovink.in=https://github.com/slovink/terraform-aws-ecr'>
+<a href='https://www.facebook.com/Slovink.in=https://github.com/slovink/terraform-aws-ecr '>
   <img title="Share on Facebook" src="https://user-images.githubusercontent.com/50652676/62817743-4f64cb80-bb59-11e9-90c7-b057252ded50.png" />
 </a>
-<a href='https://www.linkedin.com/company/101534993/admin/feed/posts/=https://github.com/slovink/terraform-aws-ecr'>
+<a href='https://www.linkedin.com/company/101534993/admin/feed/posts/=https://github.com/slovink/terraform-aws-ecr '>
   <img title="Share on LinkedIn" src="https://user-images.githubusercontent.com/50652676/62817742-4e339e80-bb59-11e9-87b9-a1f68cae1049.png" />
 </a>
 
@@ -49,7 +48,7 @@ This module has a few dependencies:
 
 
 ## Introduction
-This Terraform module creates an AWS ECR along with additional configuration options.
+This Terraform module creates an AWS ecr along with additional configuration options.
 
 ## Examples
 For detailed examples on how to use this module, please refer to the [Examples](https://github.com/slovink/terraform-aws-ecr/tree/master/example) directory within this repository.
@@ -72,37 +71,40 @@ services include docker and container orchestration, slov migration and adoption
 remediation, and performance engineering.
 
 
-### Example: private_ecr
 
-  ```hcl
-    module "private_ecr" {
-      source             = "https://github.com/slovink/terraform-aws-ecr.git?ref=v1.0.0"
-      enable_private_ecr = true
-      name               = local.name
-      environment        = local.environment
-      scan_on_push       = true
-      max_image_count    = 7
-    }
-  ```
+## Examples
 
-### Example: public_ecr
-   ```hcl
-     module "public_ecr" {
-       source                   = "https://github.com/slovink/terraform-aws-ecr.git?ref=v1.0.0"
-       enable_public_ecr        = true
-       name                     = local.name
-       environment              = local.environment
-       max_untagged_image_count = 1
-       max_image_count          = 7
-       public_repository_catalog_data = {
-         description       = "Docker container for some things"
-         operating_systems = ["Linux"]
-         architectures     = ["x86"]
-       }
-     }
-   ```
+## Example: private_ecr
 
+```hcl
+ module "private_ecr" {
+  source             = "https://github.com/slovink/terraform-aws-ecr.git?ref=v1.0.0"
+  enable_private_ecr = true
+  name               = local.name
+  environment        = local.environment
+  scan_on_push       = true
+  max_image_count    = 7
+}
+```
 
+## Example: public_ecr
+```hcl
+module "public_ecr" {
+  source                   = "https://github.com/slovink/terraform-aws-ecr.git?ref=v1.0.0"
+  enable_public_ecr        = true
+  name                     = local.name
+  environment              = local.environment
+  max_untagged_image_count = 1
+  max_image_count          = 7
+  public_repository_catalog_data = {
+    description       = "Docker container for some things"
+    operating_systems = ["Linux"]
+    architectures     = ["x86"]
+  }
+}
+```
+
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
